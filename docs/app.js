@@ -13,11 +13,11 @@ let handler = () => {
         if(firstString.length > secondString.length){
             firstString.split("").forEach((value, index) => {
                 if(value != secondString.charAt(index)){
-                    tempValueFirstParam += `<span class="highlight">${value}</span>`
-                    tempValueSecondParam += `<span class="highlight">${secondString.charAt(index)}</span>`
+                    tempValueFirstParam += value.replace(value,`<span class="highlight">${value}</span>`)
+                    tempValueSecondParam += secondString.charAt(index)
                 } else {
                     tempValueFirstParam += value
-                    tempValueSecondParam += value
+                    tempValueSecondParam += secondString.charAt(index)
                 }
             })
             firstParam.innerHTML = tempValueFirstParam
@@ -25,11 +25,11 @@ let handler = () => {
         } else {
             secondString.split("").forEach((value, index) => {
                 if(value != firstString.charAt(index)){
-                    tempValueSecondParam += `<span class="highlight">${value}</span>`
-                    tempValueFirstParam += `<span class="highlight">${firstString.charAt(index)}</span>`
+                    tempValueSecondParam += value.replace(value,`<span class="highlight">${value}</span>`)
+                    tempValueFirstParam += firstString.charAt(index)
                 } else {
                     tempValueSecondParam += value
-                    tempValueFirstParam += value
+                    tempValueFirstParam += firstString.charAt(index)
                 }
             })
             secondParam.innerHTML = tempValueSecondParam
@@ -56,6 +56,6 @@ let handler = () => {
                 result.innerText = "Nope!";
                 highlight(str1,str2)
             }
-        })(field1val,field2val)
+        })(field1val.trim(),field2val.trim())
     }
 }
