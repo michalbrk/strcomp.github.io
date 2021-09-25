@@ -2,46 +2,46 @@ let handler = () => {
     let field1val = document.getElementById("field1").value
     let field2val = document.getElementById("field2").value
     let result = document.getElementById("result")
-    let firstParam = document.getElementById("firstParam")
-    let secondParam = document.getElementById("secondParam")
+    let firstPara = document.getElementById("firstParam")
+    let secondPara = document.getElementById("secondParam")
 
     function highlight(firstString,secondString){
-        let tempValueFirstParam = ""
-        let tempValueSecondParam = ""
-        firstParam.innerText = firstString
-        secondParam.innerText = secondString
+        let tempValueFirstPara = ""
+        let tempValueSecondPara = ""
         if(firstString.length > secondString.length){
             firstString.split("").forEach((value, index) => {
-                if(value != secondString.charAt(index)){
-                    tempValueFirstParam += value.replace(value,`<span class="highlight">${value}</span>`)
-                    tempValueSecondParam += secondString.charAt(index)
+                let secondStrCurrentLetter = secondString.charAt(index)
+                if(value != secondStrCurrentLetter){
+                    tempValueFirstPara += value.replace(value, `<span class="highlight">${value}</span>`)
+                    tempValueSecondPara += secondStrCurrentLetter.replace(secondStrCurrentLetter, `<span class="highlight">${secondStrCurrentLetter}</span>`)
                 } else {
-                    tempValueFirstParam += value
-                    tempValueSecondParam += secondString.charAt(index)
+                    tempValueFirstPara += value
+                    tempValueSecondPara += secondStrCurrentLetter
                 }
             })
-            firstParam.innerHTML = tempValueFirstParam
-            secondParam.innerHTML = tempValueSecondParam
+            firstPara.innerHTML = tempValueFirstPara
+            secondPara.innerHTML = tempValueSecondPara
         } else {
             secondString.split("").forEach((value, index) => {
-                if(value != firstString.charAt(index)){
-                    tempValueSecondParam += value.replace(value,`<span class="highlight">${value}</span>`)
-                    tempValueFirstParam += firstString.charAt(index)
+                let firstStrCurrentLetter = firstString.charAt(index)
+                if(value != firstStrCurrentLetter){
+                    tempValueSecondPara += value.replace(value, `<span class="highlight">${value}</span>`)
+                    tempValueFirstPara += firstStrCurrentLetter.replace(firstStrCurrentLetter, `<span class="highlight">${firstStrCurrentLetter}</span>`)
                 } else {
-                    tempValueSecondParam += value
-                    tempValueFirstParam += firstString.charAt(index)
+                    tempValueSecondPara += value
+                    tempValueFirstPara += firstStrCurrentLetter
                 }
             })
-            secondParam.innerHTML = tempValueSecondParam
-            firstParam.innerHTML = tempValueFirstParam
+            secondPara.innerHTML = tempValueSecondPara
+            firstPara.innerHTML = tempValueFirstPara
         }
     }
 
     result.innerText = ""
-    firstParam.innerText = ""
-    secondParam.innerText = ""
-    firstParam.classList.remove("highlight")
-    secondParam.classList.remove("highlight")
+    firstPara.innerText = ""
+    secondPara.innerText = ""
+    firstPara.classList.remove("highlight")
+    secondPara.classList.remove("highlight")
 
 
     if(field1val != "" && field2val != "") {
@@ -57,5 +57,7 @@ let handler = () => {
                 highlight(str1,str2)
             }
         })(field1val.trim(),field2val.trim())
-    }
+   }
 }
+
+if(localStorage) localStorage.clear()
