@@ -59,5 +59,3 @@ let handler = () => {
         })(field1val.trim(),field2val.trim())
    }
 }
-
-if(localStorage) localStorage.clear()
