@@ -59,3 +59,20 @@ let handler = () => {
         })(field1val.trim(),field2val.trim())
    }
 }
+
+function cleanup(storageToClean){
+    for (let property in storageToClean) {
+        if (storageToClean.hasOwnProperty(property)){
+            storageToClean.clear()
+        }
+    }
+}
+
+(function clearCookiesAndCheckStorageAvailability(...storages){
+    if(document.cookie.length != -1) document.cookie = ""
+    storages.forEach(storage => {
+        if(typeof storage != "undefined"){
+            cleanup(storage)
+        }
+    })
+})(localStorage,sessionStorage)
