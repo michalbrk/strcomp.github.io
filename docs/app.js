@@ -4,7 +4,16 @@ let handler = () => {
     let result = document.getElementById("result")
     let firstPara = document.getElementById("firstParam")
     let secondPara = document.getElementById("secondParam")
-
+    
+    function clearFields(){
+        if(field1val.length > 0 || field2val.length > 0){
+            result.innerText = ""
+            firstPara.innerText = ""
+            secondPara.innerText = ""
+            firstPara.classList.remove("highlight")
+            secondPara.classList.remove("highlight")
+        }
+    }
     function highlight(firstString,secondString){
         let tempValueFirstPara = ""
         let tempValueSecondPara = ""
@@ -37,12 +46,7 @@ let handler = () => {
         }
     }
 
-    result.innerText = ""
-    firstPara.innerText = ""
-    secondPara.innerText = ""
-    firstPara.classList.remove("highlight")
-    secondPara.classList.remove("highlight")
-
+    clearFields()
 
     if(field1val != "" && field2val != "") {
         (function comparator(str1, str2){
