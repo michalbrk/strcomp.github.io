@@ -18,8 +18,8 @@ body {
 #button {
     margin-top: 3vh;
 }
-#field1::placeholder, #field2::placeholder {
-    text-transform: none;
+input::placeholder {
+    text-transform: lowercase;
 }
 #firstParam, #secondParam {
     font-size: 1.2rem;
